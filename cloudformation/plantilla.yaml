@@ -1,0 +1,61 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'Ejercicio 5 - Despliegue IaC con CloudFormation en AWS España'
+
+Parameters:
+  AmiId:
+    Type: AWS::EC2::Image::Id
+    Default: ami-0102dd62978f4d4f5
+    Description: AMI de Amazon Linux 2023
+
+  SubnetId:
+    Type: AWS::EC2::Subnet::Id
+    Default: subnet-05a2c903cc74f0856
+    Description: Subred de la VPC en eu-south-2
+
+  SecurityGroupId:
+    Type: AWS::EC2::SecurityGroup::Id
+    Default: sg-06c15a49076f9193a
+    Description: Grupo de seguridad existente
+
+Resources:
+  Datos:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: practica5-miguel-498309141031-cfn
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      Tags:
+        - Key: Name
+          Value: practica5-cloudformation
+        - Key: Project
+          Value: Ejercicio-5-IaC
+
+  Servidor:
+    Type: AWS::EC2::Instance
+    Properties:
+      ImageId: !Ref AmiId
+      InstanceType: t3.micro
+      NetworkInterfaces:
+        - DeviceIndex: '0'
+          SubnetId: !Ref SubnetId
+          GroupSet:
+            - !Ref SecurityGroupId
+          AssociatePublicIpAddress: false
+          DeleteOnTermination: true
+      Tags:
+        - Key: Name
+          Value: practica5-miguel-cloudformation
+        - Key: Project
+          Value: Ejercicio-5-IaC
+
+Outputs:
+  Bucket:
+    Description: Nombre del bucket S3 creado
+    Value: !Ref Datos
+
+  Instancia:
+    Description: Identificador de la instancia EC2
+    Value: !Ref Servidor

@@ -1,0 +1,14 @@
+# Configuración de ejemplo para AWS
+# Adaptar estos valores a la cuenta y región utilizadas
+
+aws_region = "eu-south-2"
+
+ami_id = "ami-0102dd62978f4d4f5"
+
+instance_type = "t3.micro"
+
+subnet_id = "subnet-05a2c903cc74f0856"
+
+security_group_id = "sg-06c15a49076f9193a"
+
+bucket_name = "practica5-miguel-498309141031-tf"

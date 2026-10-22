@@ -1,0 +1,27 @@
+# Terraform: proveedores y archivos temporales
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+*.tfplan
+*.tfvars
+!*.tfvars.example
+crash.log
+crash.*.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Credenciales y secretos
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials
+
+# Archivos temporales
+*.log
+.vscode/
+.DS_Store
+Thumbs.db

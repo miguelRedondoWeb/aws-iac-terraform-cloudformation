@@ -1,0 +1,14 @@
+[
+{
+    "ParameterKey": "AmiId",
+    "ParameterValue": "ami-0102dd62978f4d4f5"
+},
+{
+    "ParameterKey": "SubnetId",
+    "ParameterValue": "subnet-05a2c903cc74f0856"
+},
+{
+    "ParameterKey": "SecurityGroupId",
+    "ParameterValue": "sg-06c15a49076f9193a"
+}
+]
